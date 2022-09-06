@@ -6,16 +6,15 @@ import { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
+const app = express();
 nunjucks.configure(resolve(__dirname, "templates"), {
   express: app,
   autoscape: true,
   noCache: false,
-  watch: true,
 });
 
-const app = express();
 app.get("/", function (req, res) {
+  console.log("A New request encoutered", req.ip);
   res.render("./pages/home.html");
 });
 
