@@ -2,23 +2,23 @@
   "name": "starter-express-api",
   "version": "1.0.0",
   "description": "",
+  "license": "MIT",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:server": "nodemon index.js -e html,js,json",
+    "dev:css": "tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/main.css --watch",
+    "dev": "concurrently \"npm run dev:*\"",
+    "build": "tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/main.css",
+    "start": "npm run build && node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cyclic-software/starter-express-api.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cyclic-software/starter-express-api/issues"
-  },
-  "homepage": "https://github.com/cyclic-software/starter-express-api#readme",
   "dependencies": {
     "express": "^4.17.1",
     "nunjucks": "^3.2.3"
+  },
+  "devDependencies": {
+    "concurrently": "^7.4.0",
+    "nodemon": "^2.0.19",
+    "tailwindcss": "^3.1.8"
   }
 }
